@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather App</title>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+        <style>
+            span{
+                font-weight: bold
+            }
+        </style>
+    </head>
+<body>
+    <div>
+        <button class="getData">GET DATA</button>
+        <input class="lon" type="text"/>
+        <input class="lat" type="text"/>
+        <div> Temperature: <span id="temperature">  </span> </div>
+        <div> Dew Point: <span id="dew">  </span> </div>
+        <div> Humidity: <span id="humidity">  </span> </div>
+        <br>
+        <div> Fog: <span id="fog">  </span> </div>
+        <div> Low Clouds: <span id="low">  </span> </div>
+        <div> Mid Clouds: <span id="mid">  </span> </div>
+        <div> High Clouds: <span id="high">  </span> </div>
+    </div>
+    
+
+</body>
+<script src="js/script.js"></script>
+</html>
