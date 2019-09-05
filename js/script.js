@@ -6,52 +6,66 @@ $( document ).ready(() => {
 	  return str;
 	}
 
-	getWeather()
+	showData = (place) => {
+        let latitude = "";
+        let longitude = "";
+
+        if(place == 0){
+            latitude = $(".departure .lat").val();
+            longitude = $(".departure .lon").val();
+        } else {
+            latitude = $(".destination .lat").val();
+            longitude = $(".destination .lon").val();
+        }
+
+        getWeather(longitude, latitude)
         .then(str => $.parseXML(str))
         .then(data => {
-            const workData = data.querySelectorAll("[datatype=forecast]")[0].childNodes[1];
-            console.log(workData);
-
-            const props = workData.childNodes;
-            console.log(props);
-    
-            for(let i=0; i<props.length; i++){
-                console.log(props[i].nodeName);
-                if(props[i].nodeName != '#text'){
-                    switch(props[i].nodeName){
-                        case "temperature":
-                            document.getElementById("temperature").innerHTML = props[i].attributes[2].nodeValue;
-                            break;
-
-                        case "dewpointTemperature":
-                            document.getElementById("dew").innerHTML = props[i].attributes[2].nodeValue;
-                            break;
-                        
-                        case "humidity":
-                            document.getElementById("humidity").innerHTML = props[i].attributes[0].nodeValue;
-                            break;
-
-                        case "fog":
-                            document.getElementById("fog").innerHTML = props[i].attributes[1].nodeValue;
-                            break;
-
-                        case "lowClouds":
-                            document.getElementById("low").innerHTML = props[i].attributes[1].nodeValue;
-                            break;
-
-                        case "mediumClouds":
-                            document.getElementById("mid").innerHTML = props[i].attributes[1].nodeValue;
-                            break;
-
-                        case "highClouds":
-                            document.getElementById("high").innerHTML = props[i].attributes[1].nodeValue;
-                            break;
-                    }
-                }
-                
-            }
-          
-    
+            doTheWork(data, place)
         })
+    };
+
+    doTheWork = (data, place) => {
+        const workData = data.querySelectorAll("[datatype=forecast]")[0].childNodes[1];
+
+        const props = workData.childNodes;
+
+        for(let i=0; i<props.length; i++){
+            if(props[i].nodeName != '#text'){
+                switch(props[i].nodeName){
+                    case "temperature":
+                        document.getElementsByClassName("temperature")[place].innerHTML = props[i].getAttributeNode('value').value;
+                        break;
+
+                    case "dewpointTemperature":
+                        document.getElementsByClassName("dew")[place].innerHTML = props[i].getAttributeNode('value').value;
+                        break;
+                    
+                    case "humidity":
+                        document.getElementsByClassName("humidity")[place].innerHTML = props[i].getAttributeNode('value').value;
+                        break;
+
+                    case "fog":
+                        document.getElementsByClassName("fog")[place].innerHTML = props[i].getAttributeNode('percent').value;
+                        break;
+
+                    case "lowClouds":
+                        document.getElementsByClassName("low")[place].innerHTML = props[i].getAttributeNode('percent').value;
+                        break;
+
+                    case "mediumClouds":
+                        document.getElementsByClassName("mid")[place].innerHTML = props[i].getAttributeNode('percent').value;
+                        break;
+
+                    case "highClouds":
+                        document.getElementsByClassName("high")[place].innerHTML = props[i].getAttributeNode('percent').value;
+                        break;
+                }
+            }
+            
+        }
+
+
+    }
 
 });

@@ -10,27 +10,67 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
         <style>
+            body{
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+            }
             span{
                 font-weight: bold
+            }
+
+            .boxes{
+                padding:10px; 
+                box-sizing: border-box; 
+                width: 350px; 
+                margin: 20px; 
+                float: left; 
+                background: #dff2ff; 
+                border-radius: 5px;
+            }
+
+            .departure.boxes{
+                background: #f6ff9b
+            }
+            button{float: right}
+            .clear{
+                clear: both;
+            }
+            input {
+                width: 100px;
             }
         </style>
     </head>
 <body>
-    <div class="departure">
-        <button class="getData">GET DATA</button>
-        <input class="lat" type="text" placeholder="latitude" />
-        <input class="lon" type="text" placeholder="longitude" />
-        <div> Temperature: <span id="temperature">  </span> </div>
-        <div> Dew Point: <span id="dew">  </span> </div>
-        <div> Humidity: <span id="humidity">  </span> </div>
+    <div class="departure boxes">
+        <input class="lat" type="number" placeholder="latitude (from -90 to 90)" />
+        <input class="lon" type="number" placeholder="longitude (from -180 to 180)" />  
+        <button onclick=showData(0)>GET DATA</button> <br>
+        <div class="clear"></div> <br>
+        <div> Temperature: <span class="temperature">  </span> </div>
+        <div> Dew Point: <span class="dew">  </span> </div>
+        <div> Humidity: <span class="humidity">  </span> </div>
         <br>
-        <div> Fog: <span id="fog">  </span> </div>
-        <div> Low Clouds: <span id="low">  </span> </div>
-        <div> Mid Clouds: <span id="mid">  </span> </div>
-        <div> High Clouds: <span id="high">  </span> </div>
+        <div> Fog: <span class="fog">  </span> </div>
+        <div> Low Clouds: <span class="low">  </span> </div>
+        <div> Mid Clouds: <span class="mid">  </span> </div>
+        <div> High Clouds: <span class="high">  </span> </div>
+    </div>
+
+    <div class="destination boxes">
+        <input class="lat" type="number" placeholder="latitude (from -90 to 90)" />
+        <input class="lon" type="number" placeholder="longitude (from -180 to 180)" />  
+        <button onclick=showData(1)>GET DATA</button> <br>
+        <div class="clear"></div> <br>
+        <div> Temperature: <span class="temperature">  </span> </div>
+        <div> Dew Point: <span class="dew">  </span> </div>
+        <div> Humidity: <span class="humidity">  </span> </div>
+        <br>
+        <div> Fog: <span class="fog">  </span> </div>
+        <div> Low Clouds: <span class="low">  </span> </div>
+        <div> Mid Clouds: <span class="mid">  </span> </div>
+        <div> High Clouds: <span class="high">  </span> </div>
     </div>
     
 
 </body>
-<script src="js/script.js"></script>
+<script src="script.js"></script>
 </html>
