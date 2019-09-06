@@ -15,9 +15,13 @@
     </head>
 <body>
     <div class="departure boxes">
+        <div>
+            <input type='text' placeholder="Enter city/address" class="search_term" data-val=0 />
+        </div>
+        <br>
         <input class="lat" type="number" placeholder="latitude (from -90 to 90)" />
         <input class="lon" type="number" placeholder="longitude (from -180 to 180)" />  
-        <button class="showData"  data-val=0>GET DATA</button> <br>
+        <button class="showData"  data-val=0 >GET DATA</button> <br>
         <div class="clear"></div> <br>
         <div> Temperature: <span class="temperature">  </span> </div>
         <div> Dew Point: <span class="dew">  </span> </div>
@@ -30,9 +34,12 @@
     </div>
 
     <div class="destination boxes">
+        <div>
+            <input type='text' placeholder="Enter city/address" class="search_term" data-val=1 />
+        </div>
         <input class="lat" type="number" placeholder="latitude (from -90 to 90)" />
         <input class="lon" type="number" placeholder="longitude (from -180 to 180)" />  
-        <button class="showData" data-val=1>GET DATA</button> <br>
+        <button class="showData" data-val=1 >GET DATA</button> <br>
         <div class="clear"></div> <br>
         <div> Temperature: <span class="temperature">  </span> </div>
         <div> Dew Point: <span class="dew">  </span> </div>
@@ -46,5 +53,37 @@
     
 
 </body>
+<script>
+
+    activatePlacesSearch = () => {
+        let inputs = $('.search_term');
+
+        for(let i=0; i<inputs.length; i++) {
+            let searchBox = new google.maps.places.SearchBox(inputs[i]);
+
+            searchBox.addListener('places_changed', () => {
+                const place = searchBox.getPlaces()[0];
+                if (place === 0) return;
+                const latitude = place.geometry.location.lat();
+                const longitude = place.geometry.location.lng();
+
+                console.log(latitude);
+                console.log(longitude);
+                if(inputs[i].getAttribute('data-val') == 0){
+                    $(".departure .lat").val(latitude);
+                    $(".departure .lon").val(longitude);
+                } else {
+                    $(".destination .lat").val(latitude);
+                    $(".destination .lon").val(longitude);
+                }
+                
+            })
+        }
+        
+        
+    }
+</script>
 <script src="js/script.js"></script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRuSEmC-fMgn152bKxklOL9Y_cVJkzG0I&libraries=places&callback=activatePlacesSearch"></script>
 </html>
