@@ -1,5 +1,6 @@
 $( document ).ready(() => {
 
+    //get data from weather api
     async function getWeather(lon, lat) {
         let response = await fetch(`https://api.met.no/weatherapi/locationforecast/1.9/?lat=${lat};lon=${lon}`);
         let str = await response.text()
@@ -7,18 +8,10 @@ $( document ).ready(() => {
     }
 
     $(".showData").click((e) => {
-        let place = $(e.currentTarget).data('val');
-
-        let parrentClasses = e.currentTarget.parentElement.classList;
-
-        for(let i = 0; i < parrentClasses.length; i++){
-            if(parrentClasses[i] == "departure"){
-                $('.departure .search_term').val("");
-            } else if(parrentClasses[i] == "destination"){
-                $('.destination .search_term').val("");
-            }
-        }
         
+        let place = $(e.currentTarget).data('val');
+        
+        (place == 0) ? $('.departure .search_term').val("") : $('.destination .search_term').val("");
 
         getData(place);
     });
@@ -35,16 +28,18 @@ $( document ).ready(() => {
             longitude = $(".destination .lon").val() ;
         }
 
+        //check latitude and longitude range  
         if(!checkRange(latitude, longitude)) return false;
         
         getWeather(longitude, latitude)
         .then(str => $.parseXML(str))
         .then(data => {
+            console.log(data);
             displayData(data, place);
-
             getPlaceByCoordinates(longitude, latitude, place);
         })
     } 
+
     displayData = (data, place) => {
         const workData = data.querySelectorAll("[datatype=forecast]")[0].childNodes[1];
         const props = workData.childNodes;
@@ -53,31 +48,31 @@ $( document ).ready(() => {
             if(props[i].nodeName != '#text'){
                 switch(props[i].nodeName){
                     case "temperature":
-                        document.getElementsByClassName("temperature")[place].textContent = props[i].getAttributeNode('value').value;
+                        document.getElementsByClassName("temperature")[place].textContent = props[i].getAttributeNode('value').value + '°';
                         break;
 
                     case "dewpointTemperature":
-                        document.getElementsByClassName("dew")[place].textContent = props[i].getAttributeNode('value').value;
+                        document.getElementsByClassName("dew")[place].textContent = props[i].getAttributeNode('value').value + ' °C';
                         break;
                     
                     case "humidity":
-                        document.getElementsByClassName("humidity")[place].textContent = props[i].getAttributeNode('value').value;
+                        document.getElementsByClassName("humidity")[place].textContent = props[i].getAttributeNode('value').value + '%';
                         break;
 
                     case "fog":
-                        document.getElementsByClassName("fog")[place].textContent = props[i].getAttributeNode('percent').value;
+                        document.getElementsByClassName("fog")[place].textContent = props[i].getAttributeNode('percent').value + '%';
                         break;
 
                     case "lowClouds":
-                        document.getElementsByClassName("low")[place].textContent = props[i].getAttributeNode('percent').value;
+                        document.getElementsByClassName("low")[place].textContent = props[i].getAttributeNode('percent').value + '%';
                         break;
 
                     case "mediumClouds":
-                        document.getElementsByClassName("mid")[place].textContent = props[i].getAttributeNode('percent').value;
+                        document.getElementsByClassName("mid")[place].textContent = props[i].getAttributeNode('percent').value + '%';
                         break;
 
                     case "highClouds":
-                        document.getElementsByClassName("high")[place].textContent = props[i].getAttributeNode('percent').value;
+                        document.getElementsByClassName("high")[place].textContent = props[i].getAttributeNode('percent').value + '%';
                         break;
                 }
             }
@@ -90,18 +85,19 @@ $( document ).ready(() => {
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${apiKey}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-            // sko postoji vrijednost u seracu
-            if(document.getElementsByClassName('search_term')[place].value != ""){
-                console.log(document.getElementsByClassName('search_term')[place].value);
+            // check if there is value in search input
+            let searchValue = document.getElementsByClassName('search_term')[place].value;
+
+            if(searchValue != ""){
+                document.getElementsByClassName('city')[place].innerHTML = searchValue;
             } else {
-                console.log(data.results[0].formatted_address)
+                document.getElementsByClassName('city')[place].innerHTML = data.results[0].formatted_address;
             }
             
         })
     }
 
-
+    //allow just valid range for longitude and latitude
     checkRange = (latitude, longitude) => {
         if(latitude == ""){
             alert('Latitude field cannot be empty')
