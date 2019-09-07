@@ -1,89 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Weather App</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
-       
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Weather App</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+
     </head>
-<body>
-    <div class="departure boxes">
-        <div>
-            <input type='text' placeholder="Enter city/address" class="search_term" data-val=0 />
-        </div>
-        <br>
-        <input class="lat" type="number" placeholder="latitude (from -90 to 90)" />
-        <input class="lon" type="number" placeholder="longitude (from -180 to 180)" />  
-        <button class="showData"  data-val=0 >GET DATA</button> <br>
-        <div class="clear"></div> <br>
-        <div> Temperature: <span class="temperature">  </span> </div>
-        <div> Dew Point: <span class="dew">  </span> </div>
-        <div> Humidity: <span class="humidity">  </span> </div>
-        <br>
-        <div> Fog: <span class="fog">  </span> </div>
-        <div> Low Clouds: <span class="low">  </span> </div>
-        <div> Mid Clouds: <span class="mid">  </span> </div>
-        <div> High Clouds: <span class="high">  </span> </div>
-    </div>
-
-    <div class="destination boxes">
-        <div>
-            <input type='text' placeholder="Enter city/address" class="search_term" data-val=1 />
-        </div>
-        <input class="lat" type="number" placeholder="latitude (from -90 to 90)" />
-        <input class="lon" type="number" placeholder="longitude (from -180 to 180)" />  
-        <button class="showData" data-val=1 >GET DATA</button> <br>
-        <div class="clear"></div> <br>
-        <div> Temperature: <span class="temperature">  </span> </div>
-        <div> Dew Point: <span class="dew">  </span> </div>
-        <div> Humidity: <span class="humidity">  </span> </div>
-        <br>
-        <div> Fog: <span class="fog">  </span> </div>
-        <div> Low Clouds: <span class="low">  </span> </div>
-        <div> Mid Clouds: <span class="mid">  </span> </div>
-        <div> High Clouds: <span class="high">  </span> </div>
-    </div>
     
+    <body>
 
-</body>
-<script>
-
-    activatePlacesSearch = () => {
-        let inputs = $('.search_term');
-
-        for(let i=0; i<inputs.length; i++) {
-            let searchBox = new google.maps.places.SearchBox(inputs[i]);
-
-            searchBox.addListener('places_changed', () => {
-                const place = searchBox.getPlaces()[0];
-                if (place === 0) return;
-                const latitude = place.geometry.location.lat();
-                const longitude = place.geometry.location.lng();
-
-                console.log(latitude);
-                console.log(longitude);
-                if(inputs[i].getAttribute('data-val') == 0){
-                    $(".departure .lat").val(latitude);
-                    $(".departure .lon").val(longitude);
-                } else {
-                    $(".destination .lat").val(latitude);
-                    $(".destination .lon").val(longitude);
-                }
-                
-            })
+        <div class="departure_back cover">
+            <div class="darken-overlay">
+                <div class="departure boxes fade">
+                    <h2 class="title text-center">Departure weather </h2>
+                    <div>
+                        <input type='text' placeholder="Enter departure city/address" class="search_term" data-val=0 />
+                    </div>
+                    
+                    <p class="text-center">or search by geolocation</p>
+                    <br>
+                    <input class="lat" type="number" placeholder="latitude (from -90 to 90)" />
+                    <input class="lon" type="number" placeholder="longitude (from -180 to 180)" />  
+                    <button class="showData"  data-val=0 >GET DATA</button> <br>
+                    <div class="clear"></div>
+                    <br>
+                    <div class="dataBox">
+                        <div> Temperature: <span class="temperature">  </span> </div>
+                        <div> Dew Point: <span class="dew">  </span> </div>
+                        <div> Humidity: <span class="humidity">  </span> </div>
+                        <br>
+                        <div> Fog: <span class="fog">  </span> </div>
+                        <div> Low Clouds: <span class="low">  </span> </div>
+                        <div> Mid Clouds: <span class="mid">  </span> </div>
+                        <div> High Clouds: <span class="high">  </span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="destination_back cover">
+            <div class="darken-overlay">
+                <div class="destination boxes fade">
+                    <div>
+                        <input type='text' placeholder="Enter city/address" class="search_term" data-val=1 />
+                    </div>
+                    <input class="lat" type="number" placeholder="latitude (from -90 to 90)" />
+                    <input class="lon" type="number" placeholder="longitude (from -180 to 180)" />  
+                    <button class="showData" data-val=1 >GET DATA</button> <br>
+                    <div class="clear"></div>
+                    <br>
+                    <div> Temperature: <span class="temperature">  </span> </div>
+                    <div> Dew Point: <span class="dew">  </span> </div>
+                    <div> Humidity: <span class="humidity">  </span> </div>
+                    <br>
+                    <div> Fog: <span class="fog">  </span> </div>
+                    <div> Low Clouds: <span class="low">  </span> </div>
+                    <div> Mid Clouds: <span class="mid">  </span> </div>
+                    <div> High Clouds: <span class="high">  </span> </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+    
+    <script>
+        activatePlacesSearch = () => {
+            let inputs = $('.search_term');
+        
+            for(let i=0; i<inputs.length; i++) {
+                let searchBox = new google.maps.places.SearchBox(inputs[i]);
+        
+                searchBox.addListener('places_changed', () => {
+                    const place = searchBox.getPlaces()[0];
+                    if (place === 0) return;
+                    const latitude = place.geometry.location.lat().toFixed(2);
+                    const longitude = place.geometry.location.lng().toFixed(2);
+        
+                    console.log(latitude);
+                    console.log(longitude);
+                    if(inputs[i].getAttribute('data-val') == 0){
+                        $(".departure .lat").val(latitude);
+                        $(".departure .lon").val(longitude);
+                        getData(0);
+                    } else {
+                        $(".destination .lat").val(latitude);
+                        $(".destination .lon").val(longitude);
+                        getData(1);
+                    }
+                    
+                })
+            }
+            
         }
-        
-        
-    }
-</script>
-<script src="js/script.js"></script>
-
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRuSEmC-fMgn152bKxklOL9Y_cVJkzG0I&libraries=places&callback=activatePlacesSearch"></script>
+    </script>
+    <script src="js/script.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRuSEmC-fMgn152bKxklOL9Y_cVJkzG0I&libraries=places&callback=activatePlacesSearch"></script>
 </html>

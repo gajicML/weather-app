@@ -7,17 +7,32 @@ $( document ).ready(() => {
     }
 
     $(".showData").click((e) => {
+        let place = $(e.currentTarget).data('val');
+
+        let parrentClasses = e.currentTarget.parentElement.classList;
+
+        for(let i = 0; i < parrentClasses.length; i++){
+            if(parrentClasses[i] == "departure"){
+                $('.departure .search_term').val("");
+            } else if(parrentClasses[i] == "destination"){
+                $('.destination .search_term').val("");
+            }
+        }
+        
+
+        getData(place);
+    });
+
+    getData = (place) => {
         let latitude = "";
         let longitude = "";
-        
-        let place = $(e.currentTarget).data('val');
 
         if(place == 0){
             latitude = $(".departure .lat").val();
             longitude = $(".departure .lon").val();
         } else {
             latitude = $(".destination .lat").val();
-            longitude = $(".destination .lon").val();
+            longitude = $(".destination .lon").val() ;
         }
 
         if(!checkRange(latitude, longitude)) return false;
@@ -25,13 +40,13 @@ $( document ).ready(() => {
         getWeather(longitude, latitude)
         .then(str => $.parseXML(str))
         .then(data => {
-            displayData(data, place)
-        })
-    });
+            displayData(data, place);
 
+            getPlaceByCoordinates(longitude, latitude, place);
+        })
+    } 
     displayData = (data, place) => {
         const workData = data.querySelectorAll("[datatype=forecast]")[0].childNodes[1];
-
         const props = workData.childNodes;
 
         for(let i=0; i<props.length; i++){
@@ -68,9 +83,24 @@ $( document ).ready(() => {
             }
             
         }
-
-
     }
+
+    getPlaceByCoordinates = (lon, lat, place) =>  {
+        let apiKey = "AIzaSyCRuSEmC-fMgn152bKxklOL9Y_cVJkzG0I";
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // sko postoji vrijednost u seracu
+            if(document.getElementsByClassName('search_term')[place].value != ""){
+                console.log(document.getElementsByClassName('search_term')[place].value);
+            } else {
+                console.log(data.results[0].formatted_address)
+            }
+            
+        })
+    }
+
 
     checkRange = (latitude, longitude) => {
         if(latitude == ""){
@@ -95,8 +125,7 @@ $( document ).ready(() => {
         
         return true;
     }
-
-
+    
 });
 
 
