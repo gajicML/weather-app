@@ -103,6 +103,7 @@ $( document ).ready(() => {
 
     getPlaceByCoordinates = (lon, lat, place) =>  {
         let apiKey = "AIzaSyCRuSEmC-fMgn152bKxklOL9Y_cVJkzG0I";
+
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${apiKey}`)
         .then(response => response.json())
         .then(data => {
@@ -143,6 +144,8 @@ $( document ).ready(() => {
         return true;
     }
 
+
+    //modal
     let modal = document.getElementById("myModal");
     let span = document.getElementsByClassName("close")[0];
     let message = document.getElementById("message");
@@ -152,9 +155,7 @@ $( document ).ready(() => {
         message.textContent = text
     }
 
-    span.onclick = () =>  {
-        modal.style.display = "none";
-    }
+    span.onclick = () => modal.style.display = "none";
 
     window.onclick = (event) =>  {
         if (event.target == modal)  modal.style.display = "none";

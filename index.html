@@ -1,63 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>Weather App</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Weather App</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <!-- <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> -->
         <link href="https://fonts.googleapis.com/css?family=Barlow:300,400&display=swap" rel="stylesheet">
-		<script
-			src="https://code.jquery.com/jquery-3.4.1.min.js"
-			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
-
     </head>
     
-	<body>
-
-		<div class="departure_back cover" style="width: 100%">
-			<div class="darken-overlay">
-				<div class="departure boxes fade">
+    <body>
+        <div class="departure_back cover">
+            <div class="darken-overlay">
+                <div class="departure boxes fade">
                     <h2 class="title text-center">Departure weather </h2>
-
                     <input type='text' placeholder="Search departure city/address" class="search_term" data-val=0 />
-
                     <div class="clear"></div>
-
                     <div class="geosearch_box">
                         <p class="text-center">or search by geolocation</p>
                         <div class="clear"></div>
                         <input class="lat" type="number" placeholder="latitude" />
                         <input class="lon" type="number" placeholder="longitude" /> 
-					    <button class="showData"  data-val=0 >Get Location Weather</button> <br>
+                        <button class="showData"  data-val=0 >Get Location Weather</button> <br>
                     </div>
-                     
                     <div class="clear"></div>
-
                     <div class="separator"></div>
-                    
                     <h2 class="city"> Banja Luka, Bosnia and Herzegovina</h2>
-
-					<div class="dataBox">
-						<div class="temperature_box">
+                    <div class="dataBox">
+                        <div class="temperature_box">
                             <span class="temperature"> 19.8° </span>
                         </div>
-
-						<div class="dewpoint_box"> 
+                        <div class="dewpoint_box"> 
                             Dew Point Temperature <span class="dew"> 16.1 °C  </span> 
                         </div>
-
-						<div class="humidity_box"> 
+                        <div class="humidity_box"> 
                             Humidity <span class="humidity">  16.1% </span> 
                         </div>
-
                         <div class="clear"></div>
-                        
                         <div class="separator"></div>
-
                         <div class="fog_box img_box"> Fog 
                             <span class="fog"> 0.0%  </span> 
                             <img class="fog_img" src="images/fog1.jpg" />
@@ -71,29 +56,40 @@
                         <div class="mid_box img_box"> High Clouds <span class="high"> 1.6% </span>
                             <img class="high_img" src="images/high3.jpg" />
                         </div>
-					</div>
-				</div>
-			</div>
+                    </div>
+                </div>
+            </div>
         </div>
         
-		<div class="destination_back cover" style="display: none">
+        <div class="destination_back cover">
             <div class="darken-overlay">
-				<div class="destination boxes fade">
-					<div>
-						<input type='text' placeholder="Enter city/address" class="search_term" data-val=1 />
-					</div>
-					<input class="lat" type="number" placeholder="latitude (from -90 to 90)" />
-					<input class="lon" type="number" placeholder="longitude (from -180 to 180)" />  
-					<button class="showData" data-val=1 >GET DATA</button> <br>
-					<div class="clear"></div>
-                    <br>
-                    <h2 class="city"></h2>
-                    
-					<div> Temperature: <span class="temperature">  </span> </div>
-					<div> Dew Point: <span class="dew">  </span> </div>
-					<div> Humidity: <span class="humidity">  </span> </div>
-					<br>
-                    <div class="fog_box img_box"> Fog 
+                <div class="destination boxes fade">
+                    <h2 class="title text-center">Destination weather </h2>
+                    <input type='text' placeholder="Search destination city/address" class="search_term" data-val=1 />
+                    <div class="clear"></div>
+                    <div class="geosearch_box">
+                        <p class="text-center">or search by geolocation</p>
+                        <div class="clear"></div>
+                        <input class="lat" type="number" placeholder="latitude" />
+                        <input class="lon" type="number" placeholder="longitude" /> 
+                        <button class="showData"  data-val=0 >Get Location Weather</button> <br>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="separator"></div>
+                    <h2 class="city"> Banja Luka, Bosnia and Herzegovina</h2>
+                    <div class="dataBox">
+                        <div class="temperature_box">
+                            <span class="temperature"> 19.8° </span>
+                        </div>
+                        <div class="dewpoint_box"> 
+                            Dew Point Temperature <span class="dew"> 16.1 °C  </span> 
+                        </div>
+                        <div class="humidity_box"> 
+                            Humidity <span class="humidity">  16.1% </span> 
+                        </div>
+                        <div class="clear"></div>
+                        <div class="separator"></div>
+                        <div class="fog_box img_box"> Fog 
                             <span class="fog"> 0.0%  </span> 
                             <img class="fog_img" src="images/fog1.jpg" />
                         </div>
@@ -101,30 +97,31 @@
                             <img class="low_img" src="images/low1.jpg" />
                         </div>
                         <div class="mid_box img_box"> Mid Clouds <span class="mid"> 0.8% </span>
-                            <img class="mid_img" src="images/mid1.jpg" />
+                            <img class="mid_img" src="images/mid2.jpg" />
                         </div>
                         <div class="mid_box img_box"> High Clouds <span class="high"> 1.6% </span>
-                            <img class="high_img" src="images/high1.jpg" />
+                            <img class="high_img" src="images/high3.jpg" />
                         </div>
-				</div>
-			</div>
+                    </div>
+                </div>
+            </div>
         </div>
-
+        
         <!-- The Modal -->
         <div id="myModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="clear"></div>
-            <p id="message"></p>
-        </div>
-
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="clear"></div>
+                <img src="images/info.png" alt="Info:" class="info">
+                <div class="clear"></div>
+                <p id="message"></p>
+            </div>
         </div>
         
     </body>
-   
-	<script src="js/get-places.js"></script>
-	<script src="js/script.js"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRuSEmC-fMgn152bKxklOL9Y_cVJkzG0I&libraries=places&callback=activatePlacesSearch"></script>
+    
+    <script src="js/get-places.js"></script>
+    <script src="js/script.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRuSEmC-fMgn152bKxklOL9Y_cVJkzG0I&libraries=places&callback=activatePlacesSearch"></script>
 </html>
