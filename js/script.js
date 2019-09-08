@@ -34,7 +34,6 @@ $( document ).ready(() => {
         getWeather(longitude, latitude)
         .then(str => $.parseXML(str))
         .then(data => {
-            console.log(data);
             displayData(data, place);
             getPlaceByCoordinates(longitude, latitude, place);
         })
@@ -61,22 +60,44 @@ $( document ).ready(() => {
 
                     case "fog":
                         document.getElementsByClassName("fog")[place].textContent = props[i].getAttributeNode('percent').value + '%';
+
+                        showClouds(props[i].getAttributeNode('percent').value, 'fog', place);
                         break;
 
                     case "lowClouds":
                         document.getElementsByClassName("low")[place].textContent = props[i].getAttributeNode('percent').value + '%';
+                        showClouds(props[i].getAttributeNode('percent').value, 'low', place);
                         break;
 
                     case "mediumClouds":
                         document.getElementsByClassName("mid")[place].textContent = props[i].getAttributeNode('percent').value + '%';
+                        showClouds(props[i].getAttributeNode('percent').value, 'mid', place);
                         break;
 
                     case "highClouds":
                         document.getElementsByClassName("high")[place].textContent = props[i].getAttributeNode('percent').value + '%';
+                        showClouds(props[i].getAttributeNode('percent').value, 'high', place);
                         break;
                 }
             }
             
+        }
+
+
+    }
+
+    showClouds = (value, prop, place) => {
+        value = parseInt(value);
+        let img = $(`.${prop}_img`)[place];
+        
+        if(value > 20 && value < 50) {
+            img.src = `images/${prop}2.jpg`;
+            return;
+        } else if(value >= 50) {
+            img.src = `images/${prop}1.jpg`;
+            return;
+        } else{
+            img.src = `images/${prop}3.jpg`;
         }
     }
 
@@ -100,10 +121,10 @@ $( document ).ready(() => {
     //allow just valid range for longitude and latitude
     checkRange = (latitude, longitude) => {
         if(latitude == ""){
-            alert('Latitude field cannot be empty')
+            showModal('Latitude field cannot be empty');
             return false;
         } else if(longitude == ""){
-            alert('Longitude field cannot be empty')
+            showModal('Longitude field cannot be empty')
             return false;
         }
 
@@ -111,15 +132,32 @@ $( document ).ready(() => {
         longitude = parseFloat(longitude);
         
         if(latitude >= 80 || latitude <= -80){
-            alert("Latitude range must be from -80 to 80")
+            showModal("Latitude range must be from -79.9 to 79.9")
             return false;
         }
         if(longitude >= 180 || longitude <= -180){
-            alert("Longitude range must be from -180 to 180")
+            showModal("Longitude range must be from -179.9 to 179.9")
             return false;
         }
         
         return true;
+    }
+
+    let modal = document.getElementById("myModal");
+    let span = document.getElementsByClassName("close")[0];
+    let message = document.getElementById("message");
+
+    showModal = (text) => {
+        modal.style.display = "block";
+        message.textContent = text
+    }
+
+    span.onclick = () =>  {
+        modal.style.display = "none";
+    }
+
+    window.onclick = (event) =>  {
+        if (event.target == modal)  modal.style.display = "none";
     }
     
 });
