@@ -420,10 +420,9 @@ input {
     }
     .lat, .lon{
         display: inline-block;
-        margin: 0 22px;
+        margin: 2px 18px 0;
     }
     .lat {
-        margin: 8px 0 0 32px;
     }
     .separator{display: block;margin: 0px auto 10px;}
     .geosearch_box{
@@ -438,6 +437,12 @@ input {
         margin-bottom: 6px;
         margin-top: 21px;
     }
+    .inputs{
+    margin: 0 auto;
+    display: block;
+    /* overflow: hidden; */
+    width: 250px;
+}
     .temperature_box{
         font-size: 44px;
     }
