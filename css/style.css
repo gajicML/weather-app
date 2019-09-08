@@ -1,16 +1,15 @@
-body{
+body {
     height: 100vh;
     font-family: 'Barlow', sans-serif;
     font-weight: 300;
     padding: 0;
     margin: 0;
 }
-.pac-container{
-    font-family: 'Barlow', sans-serif;
 
+.pac-container {
+    font-family: 'Barlow', sans-serif;
 }
-span{
-}
+
 div.cover {
     width: 50%;
     box-sizing: border-box;
@@ -18,15 +17,19 @@ div.cover {
     height: 100%;
     background-size: cover;
 }
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #b1b1b1;
     font-style: italic
 }
+
 input:focus {
     outline: none;
     box-shadow: 2px 2px 10px #999
 }
-.title{
+
+.title {
     text-transform: uppercase;
     font-weight: normal;
     font-size: 1.5em;
@@ -34,24 +37,28 @@ input:focus {
     margin: 10px 0 20px;
 }
 
-.text-center{
+.text-center {
     text-align: center
 }
 
-div.departure_back{
-    background-image:  url(../images/d2.jpg);
+div.departure_back {
+    background-image: url(../images/d2.jpg);
 }
-div.destination_back{
-    background-image:  url(../images/n2.jpg);
+
+div.destination_back {
+    background-image: url(../images/n2.jpg);
 }
-.fade{
+
+.fade {
     opacity: 0.8;
     transition: opacity 0.5s linear;
 }
-.fade:hover{
+
+.fade:hover {
     opacity: 0.9;
     transition: opacity 0.5s linear;
 }
+
 .darken-overlay {
     width: 100%;
     height: 100%;
@@ -59,32 +66,44 @@ div.destination_back{
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-.boxes{
+.boxes {
     padding: 30px;
     box-sizing: border-box;
     max-width: 460px;
-    /* width: 60%; */
     border-radius: 15px;
     background: #ffffffa3;
     box-shadow: 0px 0px 10px 2px #1a1a1a;
     margin: 0 auto;
 }
 
-.departure.boxes{background: #121212;box-shadow: none;color: #fff;}
-.destination.boxes{background: #240017;box-shadow: none;color: #fff;}
+.departure.boxes {
+    background: #121212;
+    box-shadow: none;
+    color: #fff;
+}
 
-button{float: right}
-.clear{
+.destination.boxes {
+    background: #240017;
+    box-shadow: none;
+    color: #fff;
+}
+
+button {
+    float: right
+}
+
+.clear {
     clear: both;
 }
+
 input {
     width: 100px;
 }
 
-.search_term{
-    width: 80%;
+.search_term {
+    width: 84%;
     border-radius: 9px;
     border: none;
     font-size: 16px;
@@ -95,7 +114,8 @@ input {
     display: block;
 }
 
-.lat, .lon{
+.lat,
+.lon {
     width: 86px;
     border-radius: 7px;
     border: none;
@@ -107,69 +127,77 @@ input {
     position: relative;
     top: 3px;
 }
-.pac-container:after{
-    content:none !important;
+
+.pac-container:after {
+    content: none !important;
 }
 
-.pac-icon-marker {display: none !important}
+.pac-icon-marker {
+    display: none !important
+}
 
-.geosearch_box{
+.geosearch_box {
     margin: 18px auto 0;
 }
-.geosearch_box p{margin: 0.5em;}
+
+.geosearch_box p {
+    margin: 0.5em;
+}
 
 .showData {
-    -webkit-box-shadow:inset 0px 0px 0px 0px #bbdaf7;
-    box-shadow:inset 0px 0px 0px 0px #bbdaf7;
+    -webkit-box-shadow: inset 0px 0px 0px 0px #bbdaf7;
+    box-shadow: inset 0px 0px 0px 0px #bbdaf7;
     background: none;
-    -moz-border-radius:6px;
-    -webkit-border-radius:6px;
-    border-radius:6px;
-    border:1px solid #84bbf3;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #84bbf3;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
     font-family: Barlow;
     font-size: 16px;
     padding: 8px 19px;
-    text-decoration:none;
-    text-shadow:0px 1px 0px #528ecc;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #528ecc;
     transition: 0.5s;
-}
-.showData:hover {
-    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff));
-    background:-moz-linear-gradient(top, #378de5 5%, #79bbff 100%);
-    background:-webkit-linear-gradient(top, #378de5 5%, #79bbff 100%);
-    background:-o-linear-gradient(top, #378de5 5%, #79bbff 100%);
-    background:-ms-linear-gradient(top, #378de5 5%, #79bbff 100%);
-    background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff',GradientType=0);
-    background-color:#378de5;
-    transition: 0.5s;
-    
-}
-.showData:active {
-    position:relative;
-    top:1px;
 }
 
-.separator{
+.showData:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff));
+    background: -moz-linear-gradient(top, #378de5 5%, #79bbff 100%);
+    background: -webkit-linear-gradient(top, #378de5 5%, #79bbff 100%);
+    background: -o-linear-gradient(top, #378de5 5%, #79bbff 100%);
+    background: -ms-linear-gradient(top, #378de5 5%, #79bbff 100%);
+    background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff', GradientType=0);
+    background-color: #378de5;
+    transition: 0.5s;
+}
+
+.showData:active {
+    position: relative;
+    top: 1px;
+}
+
+.separator {
     height: 1px;
     margin: 15px auto;
     width: 90%;
     border-bottom: 1px solid #ffffff2e;
-}        
+}
 
-.city{
+.city {
     text-align: center;
     font-weight: normal;
     font-size: 20px;
     color: #007eff;
     height: 30px;
     font-weight: bold;
+    margin-top: -2px;
 }
 
-.temperature_box{
+.temperature_box {
     width: 50%;
     margin: 0 auto;
     font-size: 70px;
@@ -177,7 +205,8 @@ input {
     text-align: center;
 }
 
-.dewpoint_box, .humidity_box{
+.dewpoint_box,
+.humidity_box {
     box-sizing: border-box;
     width: 50%;
     float: left;
@@ -185,65 +214,66 @@ input {
     font-size: 15px;
     margin-top: 40px;
 }
-.dewpoint_box{}
-.dewpoint_box span, .humidity_box span{
+
+.dewpoint_box span,
+.humidity_box span {
     display: block;
     font-size: 36px;
 }
-.humidity_box{}
-.humidity_box span{}
-.dewpoint_box span{}
 
-.img_box{
+.img_box {
     box-sizing: border-box;
     width: 25%;
     font-size: 16px;
     float: left;
     text-align: center;
 }
-.img_box span{
+
+.img_box span.span_result {
     display: block;
     font-size: 24px;
+    position: relative;
+    bottom: -11px;
+    text-shadow: 1px 2px 1px #000;
 }
-.img_box img{
+
+.img_box img {
     width: 90%;
     display: block;
     margin: 10px auto 0;
 }
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.7);
 }
-  
-  /* Modal Content/Box */
+
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
     padding: 20px;
     padding-top: 0;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%;
     max-width: 300px;
     box-sizing: border-box;
     text-align: center;
 }
-  
-  /* The Close Button */
+
 .close {
     color: #aaa;
     float: right;
     font-size: 48px;
 }
-  
+
 .close:hover,
 .close:focus {
     color: black;
@@ -251,13 +281,164 @@ input {
     cursor: pointer;
 }
 
-#message{
+#message {
     font-weight: bold;
 }
-.info{
+
+.info {
     width: 50px;
     display: block;
     margin: -12px auto 20px;
     position: relative;
     left: 8px;
+}
+
+.dataBox {
+    overflow: hidden;
+    display: none;
+}
+
+@media (max-width: 1023px) {
+    .dataBox {
+        display: block;
+    }
+    div.cover {
+        width: 100%;
+        float: none;
+        height: auto;
+    }
+    .boxes {
+        margin: 1% auto;
+        padding: 13px;
+        max-width: 600px;
+    }
+    .dataBox {
+        float: right;
+        width: 58%;
+    }
+    .search_part {
+        overflow: hidden;
+        float: left;
+        width: 39%;
+        border-right: 1px solid #474747;
+    }
+    .separator {
+        display: none
+    }
+    .boxes>.clear {
+        display: none
+    }
+    .search_term {
+        text-indent: 8px;
+        font-size: 15px;
+        width: 93%;
+        margin-bottom: 30px;
+    }
+    .lat,
+    .lon {
+        display: block;
+        margin: 16px auto;
+    }
+    .lat {
+        margin-top: 30px;
+    }
+    .showData {
+        float: none;
+        display: block;
+        margin: 30px auto;
+    }
+    .temperature_box {
+        font-size: 40px;
+        height: 49px;
+    }
+    .city {
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+    .dewpoint_box,
+    .humidity_box {
+        font-size: 13px;
+    }
+    .dewpoint_box span,
+    .humidity_box span {
+        font-size: 24px;
+    }
+    .img_box {
+        margin: 15px 0px 0;
+        font-size: 12px;
+        height: 160px;
+    }
+    .img_box img {
+        margin-top: -24px;
+    }
+}
+
+@media (max-width: 767px) {
+    .boxes {
+        width: 93%;
+        margin: 4% auto;
+    }
+    div.destination_back {
+        background-size: contain;
+    }
+    .darken-overlay {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    .showData {
+        width: 79%;
+    }
+    .clouds{
+        display: block;
+        height: 12px;
+    }
+    .city{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 479px) {
+    .dataBox {
+        display: none;
+    }
+    .search_part{
+        float: none;
+        width: 100%;
+        border: none;
+    }
+    .dataBox{
+        float: none;
+        width: 100%;
+    }
+    .title{
+        font-size: 1.2em;
+    }
+    .search_term{
+        margin-bottom: 0;
+    }
+    .geosearch_box p{
+        margin: 0;
+    }
+    .lat, .lon{
+        display: inline-block;
+        margin: 0 22px;
+    }
+    .lat {
+        margin: 8px 0 0 32px;
+    }
+    .separator{display: block;margin: 0px auto 10px;}
+    .geosearch_box{
+    }
+    .showData{
+        margin: 17px auto 0;
+    }   
+    .img_box{
+        margin: -1px 0px 0;
+    }
+    .dewpoint_box, .humidity_box{
+        margin-bottom: 6px;
+        margin-top: 21px;
+    }
+    .temperature_box{
+        font-size: 44px;
+    }
 }

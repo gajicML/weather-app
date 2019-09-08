@@ -83,6 +83,7 @@ $( document ).ready(() => {
             
         }
 
+        document.getElementsByClassName("dataBox")[place].style.display = 'block';
 
     }
 
