@@ -113,8 +113,10 @@ $( document ).ready(() => {
 
             if(searchValue != ""){
                 document.getElementsByClassName('city')[place].innerHTML = searchValue;
-            } else {
+            } else if(data.results[0]){
                 document.getElementsByClassName('city')[place].innerHTML = data.results[0].formatted_address;
+            } else {
+                document.getElementsByClassName('city')[place].innerHTML = "";
             }
             
         })
